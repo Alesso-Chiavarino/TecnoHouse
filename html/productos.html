@@ -27,6 +27,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
               <span class="fa-solid fa-cart-shopping icono_carrito"></span>
             </button>
+            <span id="contadorCarrito" class="carrito-contador">0</span>
             <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Carrito</h5>
@@ -34,6 +35,9 @@
               </div>
               <div class="offcanvas-body">
                 <hr>
+                <div id="carrito-contenedor"></div>
+                <p class="m-2">Precio Total: $<span id="precioTotal">0</span></p>
+                <button id="vaciar-carrito" class="btn btn-danger m-4">Vaciar Carrito</button>
               </div>
             </div>
           </div>
@@ -41,7 +45,7 @@
       </header>
 
       <div class="container">
-        <div class="cartas"></div>
+        <div class="contenedorProductos"></div>
 
       </div>
 
