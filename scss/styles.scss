@@ -8,8 +8,15 @@ body {
   background-color: #fff;
 }
 header {
-  box-shadow: 0 10px 10px -10px rgb(0 0 0 / 35%);
-  background-color: #202020;
+  padding-bottom: 90px;
+  nav {
+    box-shadow: 0 10px 10px -10px rgb(0 0 0 / 35%);
+    background-color: #202020;
+    a {
+      font-size: 20px !important;
+      font-weight: 500 !important;
+    }
+  }
   hr {
     color: rgb(255, 255, 255);
     width: 60%;
@@ -136,9 +143,9 @@ h1 {
   }
 }
 
-.swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events {
-  padding: 20px;
-}
+// .swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events {
+//   // padding: 20px;
+// }
 
 
 .swiper {
@@ -174,3 +181,23 @@ h1 {
   display: flex;
   flex-wrap: wrap;
 }
+.navbar-toggler {
+  box-shadow: none !important;
+  border: 0;
+}
+
+.btn-close {
+  &:focus {
+
+    box-shadow: none !important;
+  }
+}
+
+.navbar-nav {
+  li {
+    a {
+      font-size: 18px;
+    }
+  }
+}
+
