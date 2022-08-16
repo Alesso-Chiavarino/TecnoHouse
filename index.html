@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#bla" />
   <title>TecnoHouse</title>
+  <link rel="shortcut icon" href="img/icono.ico">
   <!-- Fontawesome -->
   <script src="https://kit.fontawesome.com/7d65b7aff4.js" crossorigin="anonymous"></script>
   <!-- Bootstrap -->
@@ -26,7 +27,7 @@
   <header class="container-fluid top-0 d-flex">
     <nav class="navbar navbar-dark fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">TecnoHouse</a>
+        <a class="navbar-brand empresa" href="#"><img class="icono" src="../img/icono.png" alt="">TecnoHouse</a>
         <ul class="navbar-nav text-white mx-auto flex-row">
           <li class="nav-item m-3"><a href="#" class="nav-link active">Inicio</a></li>
           <li class="nav-item m-3"><a href="html/productos.html" class="nav-link">Productos</a></li>
@@ -36,14 +37,15 @@
           <span class="fa-solid fa-cart-shopping icono_carrito"></span>
         </button>
         <span id="contadorCarrito" class="carrito-contador">0</span>
-        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas offcanvas-end text-bg-white" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Carrito</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
             <hr>
             <div id="carrito-contenedor"></div>
+            <hr>
             <p class="m-2">Precio Total: $<span id="precioTotal">0</span></p>
             <button id="vaciar-carrito" class="btn btn-danger m-4">Vaciar Carrito</button>
           </div>
@@ -51,6 +53,11 @@
       </div>
     </nav>
   </header>
+
+  <div class="container">
+    <div class="contenedorProductos d-none"></div>
+
+  </div>
 
     <div class="container-fluid">
       <div id="carouselExampleIndicators" class="carousel slide col-12  container" data-bs-ride="true">
@@ -229,10 +236,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- SweetAlert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Archivos JS -->
     <script src="js/owl.carousel.min.js"></script>
-    <script src="js/carrousel.js"></script>
     <script src="js/carousel.js"></script>
+    <script src="js/alerts.js"></script>
+    <script src="js/stock.js"></script>
     <script src="js/scripts.js"></script>
 
 </body>

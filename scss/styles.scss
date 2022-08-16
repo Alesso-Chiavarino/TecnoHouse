@@ -15,12 +15,16 @@ header {
     padding: 0 20px !important;
     a {
       font-size: 20px !important;
+    }
+    .empresa {
       font-weight: 500 !important;
+      font-style: italic;
+      
     }
   }
   hr {
-    color: rgb(255, 255, 255);
-    width: 60%;
+    color: rgb(0, 0, 0);
+    width: 90%;
     margin: 10px auto 0 auto;
   }
 }
@@ -122,6 +126,11 @@ i {
     width: 300px !important;
   }
 
+  .card-edit {
+    width: 20% !important;
+    margin: 20px;
+  }
+
 // }
 
 h1 {
@@ -185,6 +194,7 @@ h1 {
 .contenedorProductos {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .navbar-toggler {
   box-shadow: none !important;
@@ -256,4 +266,22 @@ h1 {
     border-radius: 50%;
     font-size: 1rem;
     font-weight: 700;
+}
+
+.icono {
+  width: 50px;
+}
+
+.card-carrito {
+  margin: auto;
+  width: 100%;
+  // background-color: #fff;
+}
+
+.offcanvas-body {
+  .carrito-contenedor {
+    display: flex !important;
+      justify-content: center !important;
+      flex-wrap: wrap !important;
+  }
 }
