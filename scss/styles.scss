@@ -137,7 +137,7 @@ i {
   }
 
   .card-edit {
-    width: 20% !important;
+    width: 25% !important;
     margin: 20px;
   }
 
@@ -359,4 +359,43 @@ footer {
   &:hover {
     background-color: #12ec62;
   }
+}
+
+// edito el aside 
+
+aside {
+  h2 {
+    font-size: 22px;
+    margin: 10px;
+    text-align: center;
+    // margin-left: 20px;
+  }
+  div {
+    margin: 3px 0 0 20px ;
+    padding: 3px;
+    label {
+      cursor: pointer;
+    }
+  }
+  :last-child {
+    margin-bottom: 5px;
+  }
+  height: fit-content;
+  // text-align: center;
+  border: 0;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  border-radius: 6px;
+  color: rgba(0, 0, 0, .87);
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%),
+  0 3px 1px -2px rgb(0 0 0 / 20%),
+  0 1px 5px 0 rgb(0 0 0 / 12%);
+  overflow: hidden;
+  // transition: .3s ease all;
+}
+
+.contenedorFiltrado {
+  display: none;
 }

@@ -8,55 +8,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// declaro variables
 const botonVaciar = document.getElementById('vaciar-carrito')
 const contenedorCarrito = document.getElementById('carrito-contenedor');
 const contadorCarrito = document.getElementById('contadorCarrito');
 const precioTotal = document.getElementById('precioTotal');
 
 
-//cards
-
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0;
+    actualizarStorage();
     actualizarCarrito();
 })
 
 let contenedorProductos = document.querySelector(".contenedorProductos");
 
-productos.forEach((producto) => {
+// renderizo las cards en el DOM
+const renderizarProductos = () => {
+    productos.forEach((producto) => {
 
-    const card=document.createElement("div");
-    card.className="card card-edit col-md-3";
-    card.innerHTML=`
-        <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">${producto.nombre}</h5>
-            <p class="card-text">${producto.precio}</p>
-            <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
-        </div>
-    `;
-    contenedorProductos.appendChild(card);
-
-    const boton = document.getElementById(`agregar${producto.id}`);
+        const card=document.createElement("div");
+        card.className="card card-edit col-md-3";
+        card.innerHTML=`
+            <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text">${producto.precio}</p>
+                <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+            </div>
+        `;
+        contenedorProductos.appendChild(card);
     
-    boton.addEventListener('click', () => {
-        agregarAlCarrito(producto.id);
+        const boton = document.getElementById(`agregar${producto.id}`);
+        
+        boton.addEventListener('click', () => {
+            agregarAlCarrito(producto.id);
+        });
+        
     });
-    
-});
+} 
 
+// funcion para pushear el producto al array carrito
 const agregarAlCarrito = (prodId) => {
-    const item = productos.find((prod) => prod.id === prodId)
-    carrito.push(item)
-    actualizarCarrito()
-    console.log(carrito)
-    alerta()
+    const item = productos.find((producto) => producto.id === prodId);
+    carrito.push(item);
+    actualizarCarrito();
+    alerta();
 }
 
+// funcion para eliminar el producto al array carrito
 const eliminarDelCarrito = (prodID) => {
     const item = carrito.find((producto) => producto.id === prodID);
     const indice = carrito.indexOf(item);
     carrito.splice(indice, 1);
+    actualizarStorage();
     actualizarCarrito();
 }
 
@@ -77,8 +82,58 @@ const actualizarCarrito = () => {
         </div>
         `;
         contenedorCarrito.appendChild(cardCarrito);
-        localStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarStorage();
     });
     contadorCarrito.innerText = carrito.length;
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.precio, 0);
 }
+
+const actualizarStorage = () => localStorage.setItem('carrito', JSON.stringify(carrito));
+
+
+
+const productosFiltrados = [];
+
+const filtrarProducto = (categoriaProd) => {
+    const categoria = productos.filter((producto) => producto.categoria === categoriaProd);
+    productosFiltrados.push(categoria);
+}
+
+
+let inputs = document.getElementsByTagName('input')
+
+//PLACAS
+inputs[1].onclick = () => {
+    contenedorFiltrado.innerHTML = '';
+
+    filtrarProducto(productos[2].categoria);
+
+    padreProductos.style.display = 'none';
+    contenedorFiltrado.style.display = 'block'
+
+        productosFiltrados[0].forEach((producto) => {
+        const card = document.createElement('div')
+        card.className = 'card card-edit col-md-3'
+        card.innerHTML = `
+        <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">${producto.nombre}</h5>
+            <p class="card-text">${producto.precio}</p>
+            <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+        </div>
+        `
+        contenedorFiltrado.append(card);
+    })
+}
+
+//TODO
+inputs[0].onclick = () => {
+    padreProductos.style.display = 'flex'
+    contenedorFiltrado.style.display = 'none'
+}
+
+// renderizo
+renderizarProductos();
+
+const padreProductos = document.getElementById('contenedorProductos')
+const contenedorFiltrado = document.getElementById('contenedorFiltrado')

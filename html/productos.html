@@ -46,15 +46,62 @@
                 <hr>
                 <p class="m-2">Precio Total: $<span id="precioTotal">0</span></p>
                 <button id="vaciar-carrito" class="btn btn-danger m-4">Vaciar Carrito</button>
+                <button class="btn btn-success m-4">Comprar</button>
               </div>
             </div>
           </div>
         </nav>
       </header>
 
-      <div class="container">
-        <div class="contenedorProductos"></div>
-
+      <div class="container d-flex flex-nowrap">
+        <aside class="cont_categorias d-flex flex-column w-25">
+          <h2>Categorias:</h2>
+          <hr class="w-75 mx-auto my-2">
+          <div>
+            <input type="radio" value="todo" id="todo" name="filtro">
+            <label for="todo">Todo</label>
+          </div>
+          <div>
+            <input type="radio" value="input_placa" id="input_placa" name="filtro">
+            <label for="input_placa">Placas Madre</label>
+          </div>
+          <div>
+            <input type="radio" value="input_procesador" id="input_procesador" name="filtro">
+            <label for="input_procesador">Procesadores</label>
+          </div>
+          <div>
+            <input type="radio" value="input_Placa_video" id="input_Placa_video" name="filtro">
+            <label for="input_Placa_video">Placas de video</label>
+          </div>
+          <div>
+            <input type="radio" value="input_Memoria_ram" id="input_Memoria_ram" name="filtro">
+            <label for="input_Memoria_ram">Memorias ram</label>
+          </div>
+          <div>
+            <input type="radio" value="input_fuente" id="input_fuente" name="filtro">
+            <label for="input_fuente">Fuentes de poder</label>
+          </div>
+          <div>
+            <input type="radio" value="input_discos_rigido" id="input_discos_rigido" name="filtro">
+            <label for="input_discos_rigido">Discos rigidos</label>
+          </div>
+          <div>
+            <input type="radio" value="input_discos_solidos" id="input_discos_solidos" name="filtro">
+            <label for="input_discos_solidos">Discos solidos</label>
+          </div>
+          <div>
+            <input type="radio" value="input_discos_m2" id="input_discos_m2" name="filtro">
+            <label for="input_discos_m2">Discos M2</label>
+          </div>
+          <div>
+            <input type="radio" value="input_Coolers" id="input_Coolers" name="filtro">
+            <label for="input_Coolers">Coolers</label>
+          </div>
+        </aside>
+        <!-- Productos -->
+        <div class="contenedorProductos w-75" id="contenedorProductos"></div>
+        <div class="contenedorFiltrado w-75" id="contenedorFiltrado"></div>
+      
       </div>
 
       <footer class="container-fluid">
