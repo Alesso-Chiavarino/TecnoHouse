@@ -49,8 +49,31 @@ const renderizarProductos = () => {
 const agregarAlCarrito = (prodId) => {
   const item = productos.find((producto) => producto.id === prodId);
   carrito.push(item);
+  Toastify({
+
+    text: 'Producto: '+ item.nombre + ' agregado al carrito!',
+    
+    duration: 3000,
+    close: true,
+    gravity: "bottom",
+    position: "right",
+    style: {
+      width: '300px',
+      background: '#202020',
+    }
+    
+    }).showToast();
+  // Swal.fire({
+  //   position: 'bottom-end',
+  //   icon: 'success',
+  //   text: 'Producto: '+ item.nombre + ' agregado al carrito!',
+  //   showConfirmButton: false,
+  //   timer: 1500,
+  //   width: '200',
+  //   height: '100',
+  //   fontSize: '10'
+  // })
   actualizarCarrito();
-  alerta();
 };
 
 // funcion para eliminar el producto al array carrito
