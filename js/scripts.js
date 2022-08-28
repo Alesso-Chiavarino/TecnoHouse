@@ -26,7 +26,7 @@ let contenedorProductos = document.querySelector(".contenedorProductos");
 const renderizarProductos = () => {
     productos.forEach((producto) => {
         const card = document.createElement("div");
-        card.className = "card card-edit col-md-3";
+        card.className = "card card-edit";
         card.innerHTML = `
         <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
         <div class="card-body">
