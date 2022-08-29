@@ -75,7 +75,9 @@ i {
     letter-spacing: 0.5;
   }
   .card {
-    width: 18.75em;
+    margin: auto;
+    width: 90% !important;
+    // width: 18.75em;
   }
 }
 
@@ -145,7 +147,7 @@ i {
 }
 
 .f-color-l {
-  left: -1.5625em;
+  left: -1em;
 }
 
 .img-prod-carrito {

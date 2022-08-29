@@ -15,14 +15,20 @@ $(document).ready(function(){
             0: {
                 items: 1
             },
-            775: {
+            576: {
                 items: 2
             },
-            1200: {
+            768: {
                 items: 3
             },
-            1400: {
+            992: {
                 items: 4
+            },
+            1200: {
+                items: 5
+            },
+            1400: {
+                items: 5
             }
         },
     });

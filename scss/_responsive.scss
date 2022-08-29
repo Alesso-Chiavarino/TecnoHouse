@@ -1,4 +1,4 @@
-
+// ----------  RESPONSIVE  ---------- //
 
 // `sm` applies to x-small devices (portrait phones, less than 576px)
 @media screen and (max-width: 576px) {
@@ -17,6 +17,12 @@
     .carrito-contador {
         top: 72px !important;
     }
+    //Inicio
+    .carousel {
+        margin-top: 65px;
+    }
+
+    //Productos
     .contenedorProductos {
         justify-content: center !important;
         margin: auto;
@@ -36,7 +42,7 @@
     .contenedorFiltrado {
         margin: auto;
         .card-edit {
-            min-width: 70% !important;
+            min-width: 80% !important;
         }
     }
 
@@ -45,6 +51,13 @@
 // `md` applies to small devices (landscape phones, less than 768px)
 @media screen and (max-width: 768px) {
     // Inicio //
+    .produc_destac {
+        .card {
+            margin: auto;
+            width: 90% !important;
+        }
+
+    }
     body {
         font-size: 12px;
     }
@@ -80,6 +93,15 @@
     .carrito-contador {
         top: 13px;
     }
+    .produc_destac {
+        .card {
+            margin: auto;
+            width: 90% !important;
+        }
+
+    }
+
+
     .cont_categorias {
         width: 30% !important;
     }
@@ -103,11 +125,26 @@
     body {
         font-size: 10px;
     }
+    .produc_destac {
+        .card {
+            margin: auto;
+            width: 90% !important;
+        }
+
+    }
 }
 
 // `xxl` applies to x-large devices (large desktops, less than 1400px)
 @media screen and (max-width: 1400px) {
+    //Inicio
     body {
         font-size: 14px;
+    }
+    .produc_destac {
+        .card {
+            margin: auto;
+            width: 90% !important;
+        }
+
     }
 }
