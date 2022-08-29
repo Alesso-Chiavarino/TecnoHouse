@@ -6,6 +6,7 @@
 
 body {
   background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
 }
 
 header {
@@ -70,8 +71,10 @@ i {
 .produc_destac {
   padding: 1.25em;
   h1 {
-    margin: 3.125em 0 1.875em 0;
-    font-size: 1.875em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin: 2em 0 1em 0;
+    font-size: 1.6em;
     letter-spacing: 0.5;
   }
   .card {
@@ -299,4 +302,9 @@ aside {
   // flex-wrap: wrap;
   // justify-content: center;
 }
+
+.progress-bar {
+  background-color: #000
+}
+
 @import "responsive.scss";
