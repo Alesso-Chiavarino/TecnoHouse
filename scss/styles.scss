@@ -6,7 +6,8 @@
 
 body {
   background-color: #fff;
-  font-family: 'Open Sans', sans-serif;
+  // font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -255,6 +256,7 @@ footer {
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 40px;
   cursor: pointer;
   &:hover {
     background-color: #12ec62;
@@ -304,7 +306,19 @@ aside {
 }
 
 .progress-bar {
-  background-color: #000
+  background-color: #000;
 }
+
+.carousel_principal {
+  img {
+    height: 200px !important;
+    width: 100%;
+  }
+  margin: auto;
+}
+
+// .progress-bar.progress-bar-striped.progress-bar-animated {
+//   width: 75% !important;
+// }
 
 @import "responsive.scss";
