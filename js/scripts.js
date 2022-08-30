@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+localStorage.getItem('carrito') && console.log(carrito)
+
 // declaro variables
 const botonVaciar = document.getElementById("vaciar-carrito");
 const contenedorCarrito = document.getElementById("carrito-contenedor");
@@ -44,6 +46,36 @@ const renderizarProductos = () => {
         });
     });
 };
+
+
+
+
+// const agregarAlCarrito2 = (prodIDD) => {
+//   const item = productosFiltrados[0].find((pro) => pro.id === prodIDD);
+//   carrito.push(item);
+//   console.log(item)
+//   let prodID = producto.id
+//     console.log(prodID)
+//   // Toastify({
+
+//   //   // text: 'Producto: '+ item.nombre + ' agregado al carrito!',
+    
+//   //   duration: 3000,
+//   //   close: true,
+//   //   gravity: "bottom",
+//   //   position: "right",
+//   //   style: {
+//   //     width: '300px',
+//   //     background: '#202020',
+//   //   }
+    
+//   //   }).showToast();
+//   // actualizarCarrito();
+// }
+
+
+
+
 
 // funcion para pushear el producto al array carrito
 const agregarAlCarrito = (prodId) => {
@@ -133,6 +165,8 @@ inputs[0].onclick = () => {
 
 //PLACAS
 inputs[1].onclick = () => {
+  //operador ternario
+  inputs[1].checked? console.log(inputs[1]):console.log('error')
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
@@ -160,6 +194,8 @@ inputs[1].onclick = () => {
 
 //PROCESADORES
 inputs[2].onclick = () => {
+  //con operador logico and
+  inputs[2].checked && console.log(inputs[2])
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
@@ -181,12 +217,21 @@ inputs[2].onclick = () => {
                 <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
             </div>
             `;
+            let boton = document.getElementById(`agregar${producto.id}`);
+        
+            boton.addEventListener("click", () => {
+                agregarAlCarrito2(producto.id);
+                alert('hola')
+            });
+    console.log(boton)
     contenedorFiltrado.append(card);
   });
 };
 
 //PLACAS DE VIDEO
 inputs[3].onclick = () => {
+  //operador logico or
+  !inputs[3].checked || console.log(inputs[3])
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
