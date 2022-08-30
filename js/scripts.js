@@ -15,6 +15,8 @@ const botonVaciar = document.getElementById("vaciar-carrito");
 const contenedorCarrito = document.getElementById("carrito-contenedor");
 const contadorCarrito = document.getElementById("contadorCarrito");
 const precioTotal = document.getElementById("precioTotal");
+const padreProductos = document.getElementById("contenedorProductos");
+const contenedorFiltrado = document.getElementById("contenedorFiltrado");
 
 botonVaciar.addEventListener("click", () => {
   carrito.length = 0;
@@ -404,5 +406,3 @@ inputs[9].onclick = () => {
 // renderizo
 renderizarProductos();
 
-const padreProductos = document.getElementById("contenedorProductos");
-const contenedorFiltrado = document.getElementById("contenedorFiltrado");

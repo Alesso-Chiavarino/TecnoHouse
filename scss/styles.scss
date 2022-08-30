@@ -6,8 +6,6 @@
 
 body {
   background-color: #fff;
-  // background-color: #00c8d2;
-  // font-family: 'Open Sans', sans-serif;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -257,7 +255,6 @@ footer {
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 40px;
   cursor: pointer;
   &:hover {
     background-color: #12ec62;
@@ -271,7 +268,6 @@ aside {
     font-size: 1.375em;
     margin: 0.625em;
     text-align: center;
-    // margin-left: 20px;
   }
   div {
     margin: 0.1875em 0 0 1.25em ;
@@ -284,7 +280,6 @@ aside {
     margin-bottom: 0.3125em;
   }
   height: fit-content;
-  // text-align: center;
   border: 0;
   margin-bottom: 1.875em;
   margin-top: 1.875em;
@@ -296,14 +291,10 @@ aside {
   0 3px 1px -2px rgb(0 0 0 / 20%),
   0 1px 5px 0 rgb(0 0 0 / 12%);
   overflow: hidden;
-  // transition: .3s ease all;
 }
 
 .contenedorFiltrado {
   display: none;
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: center;
 }
 
 .progress-bar {
@@ -322,4 +313,28 @@ aside {
 //   width: 75% !important;
 // }
 
+.contenedor_contacto {
+  .form-control {
+    outline: none !important;
+  }
+  .input-group-text {
+    background-color: black;
+    margin-right: 10px;
+  }
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  h1 {
+    font-style: italic;
+    font-weight: normal;
+    font-family: 'Roboto', sans-serif;
+  }
+  .caja {
+    margin: 40px 0;
+    width: 50%;
+    height: 60vh;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+}
 @import "responsive.scss";
