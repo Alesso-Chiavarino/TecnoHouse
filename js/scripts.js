@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-localStorage.getItem('carrito') && console.log(carrito)
+localStorage.getItem("carrito") && console.log(carrito);
 
 // declaro variables
 const botonVaciar = document.getElementById("vaciar-carrito");
@@ -26,10 +26,10 @@ let contenedorProductos = document.querySelector(".contenedorProductos");
 
 // renderizo las cards en el DOM
 const renderizarProductos = () => {
-    productos.forEach((producto) => {
-        const card = document.createElement("div");
-        card.className = "card card-edit";
-        card.innerHTML = `
+  productos.forEach((producto) => {
+    const card = document.createElement("div");
+    card.className = "card card-edit";
+    card.innerHTML = `
         <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
         <div class="card-body">
         <h5 class="card-title">${producto.nombre}</h5>
@@ -37,64 +37,52 @@ const renderizarProductos = () => {
         <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
         </div>
         `;
-        contenedorProductos.appendChild(card);
-        
-        const boton = document.getElementById(`agregar${producto.id}`);
-        
-        boton.addEventListener("click", () => {
-            agregarAlCarrito(producto.id);
-        });
+    contenedorProductos.appendChild(card);
+
+    const boton = document.getElementById(`agregar${producto.id}`);
+
+    boton.addEventListener("click", () => {
+      agregarAlCarrito(producto.id);
     });
+  });
 };
 
+//
+const agregarAlCarritoProdsFiltrados = (prodID) => {
+  const item = productosFiltrados[0].find((prod) => prod.id === prodID);
+  carrito.push(item);
+  console.log(item);
+  Toastify({
+    text: "Producto: " + item.nombre + " agregado al carrito!",
 
-
-
-// const agregarAlCarrito2 = (prodIDD) => {
-//   const item = productosFiltrados[0].find((pro) => pro.id === prodIDD);
-//   carrito.push(item);
-//   console.log(item)
-//   let prodID = producto.id
-//     console.log(prodID)
-//   // Toastify({
-
-//   //   // text: 'Producto: '+ item.nombre + ' agregado al carrito!',
-    
-//   //   duration: 3000,
-//   //   close: true,
-//   //   gravity: "bottom",
-//   //   position: "right",
-//   //   style: {
-//   //     width: '300px',
-//   //     background: '#202020',
-//   //   }
-    
-//   //   }).showToast();
-//   // actualizarCarrito();
-// }
-
-
-
-
+    duration: 3000,
+    close: true,
+    gravity: "bottom",
+    position: "right",
+    style: {
+      width: "300px",
+      background: "#202020",
+    },
+  }).showToast();
+  actualizarCarrito();
+};
 
 // funcion para pushear el producto al array carrito
 const agregarAlCarrito = (prodId) => {
   const item = productos.find((producto) => producto.id === prodId);
   carrito.push(item);
   Toastify({
+    text: "Producto: " + item.nombre + " agregado al carrito!",
 
-    text: 'Producto: '+ item.nombre + ' agregado al carrito!',
-    
     duration: 3000,
     close: true,
     gravity: "bottom",
     position: "right",
     style: {
-      width: '300px',
-      background: '#202020',
-    }
-    
-    }).showToast();
+      width: "300px",
+      background: "#202020",
+    },
+  }).showToast();
   // Swal.fire({
   //   position: 'bottom-end',
   //   icon: 'success',
@@ -166,7 +154,7 @@ inputs[0].onclick = () => {
 //PLACAS
 inputs[1].onclick = () => {
   //operador ternario
-  inputs[1].checked? console.log(inputs[1]):console.log('error')
+  inputs[1].checked ? console.log(inputs[1]) : console.log("error");
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
@@ -185,7 +173,7 @@ inputs[1].onclick = () => {
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
                 <p class="card-text">${producto.precio}</p>
-                <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+                <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
             </div>
             `;
     contenedorFiltrado.append(card);
@@ -214,24 +202,18 @@ inputs[2].onclick = () => {
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
                 <p class="card-text">${producto.precio}</p>
-                <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+                <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
             </div>
             `;
-            let boton = document.getElementById(`agregar${producto.id}`);
-        
-            boton.addEventListener("click", () => {
-                agregarAlCarrito2(producto.id);
-                alert('hola')
-            });
-    console.log(boton)
     contenedorFiltrado.append(card);
   });
+  actualizarCarrito();
 };
 
 //PLACAS DE VIDEO
 inputs[3].onclick = () => {
   //operador logico or
-  !inputs[3].checked || console.log(inputs[3])
+  !inputs[3].checked || console.log(inputs[3]);
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
@@ -250,7 +232,7 @@ inputs[3].onclick = () => {
               <div class="card-body">
                   <h5 class="card-title">${producto.nombre}</h5>
                   <p class="card-text">${producto.precio}</p>
-                  <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+                  <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
               </div>
               `;
     contenedorFiltrado.append(card);
@@ -277,7 +259,7 @@ inputs[4].onclick = () => {
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
                     <p class="card-text">${producto.precio}</p>
-                    <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+                    <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
     contenedorFiltrado.append(card);
@@ -286,138 +268,138 @@ inputs[4].onclick = () => {
 
 //FUENTES DE PODER
 inputs[5].onclick = () => {
-    contenedorFiltrado.innerHTML = "";
-    productosFiltrados.length = 0;
-  
-    filtrarProducto(productos[3].categoria);
-  
-    padreProductos.style.display = "none";
-    contenedorFiltrado.style.display = "flex";
-    contenedorFiltrado.className =
-      "contenedorFiltrado w-75 flex-wrap justify-content-center";
-  
-    productosFiltrados[0].forEach((producto) => {
-      const card = document.createElement("div");
-      card.className = "card card-edit col-md-3";
-      card.innerHTML = `
+  contenedorFiltrado.innerHTML = "";
+  productosFiltrados.length = 0;
+
+  filtrarProducto(productos[3].categoria);
+
+  padreProductos.style.display = "none";
+  contenedorFiltrado.style.display = "flex";
+  contenedorFiltrado.className =
+    "contenedorFiltrado w-75 flex-wrap justify-content-center";
+
+  productosFiltrados[0].forEach((producto) => {
+    const card = document.createElement("div");
+    card.className = "card card-edit col-md-3";
+    card.innerHTML = `
                 <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
                     <p class="card-text">${producto.precio}</p>
-                    <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+                    <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
-      contenedorFiltrado.append(card);
-    });
-  };
+    contenedorFiltrado.append(card);
+  });
+};
 
 //DISCOS RIGIDOS
 inputs[6].onclick = () => {
-    contenedorFiltrado.innerHTML = "";
-    productosFiltrados.length = 0;
-  
-    filtrarProducto(productos[5].categoria);
-  
-    padreProductos.style.display = "none";
-    contenedorFiltrado.style.display = "flex";
-    contenedorFiltrado.className =
-      "contenedorFiltrado w-75 flex-wrap justify-content-center";
-  
-    productosFiltrados[0].forEach((producto) => {
-      const card = document.createElement("div");
-      card.className = "card card-edit col-md-3";
-      card.innerHTML = `
+  contenedorFiltrado.innerHTML = "";
+  productosFiltrados.length = 0;
+
+  filtrarProducto(productos[5].categoria);
+
+  padreProductos.style.display = "none";
+  contenedorFiltrado.style.display = "flex";
+  contenedorFiltrado.className =
+    "contenedorFiltrado w-75 flex-wrap justify-content-center";
+
+  productosFiltrados[0].forEach((producto) => {
+    const card = document.createElement("div");
+    card.className = "card card-edit col-md-3";
+    card.innerHTML = `
                 <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
                     <p class="card-text">${producto.precio}</p>
-                    <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+                    <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
-      contenedorFiltrado.append(card);
-    });
-  };
+    contenedorFiltrado.append(card);
+  });
+};
 
 //DISCOS SOLIDOS
 inputs[7].onclick = () => {
-    contenedorFiltrado.innerHTML = "";
-    productosFiltrados.length = 0;
-  
-    filtrarProducto(productos[6].categoria);
-  
-    padreProductos.style.display = "none";
-    contenedorFiltrado.style.display = "flex";
-    contenedorFiltrado.className =
-      "contenedorFiltrado w-75 flex-wrap justify-content-center";
-  
-    productosFiltrados[0].forEach((producto) => {
-      const card = document.createElement("div");
-      card.className = "card card-edit col-md-3";
-      card.innerHTML = `
+  contenedorFiltrado.innerHTML = "";
+  productosFiltrados.length = 0;
+
+  filtrarProducto(productos[6].categoria);
+
+  padreProductos.style.display = "none";
+  contenedorFiltrado.style.display = "flex";
+  contenedorFiltrado.className =
+    "contenedorFiltrado w-75 flex-wrap justify-content-center";
+
+  productosFiltrados[0].forEach((producto) => {
+    const card = document.createElement("div");
+    card.className = "card card-edit col-md-3";
+    card.innerHTML = `
                 <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
                     <p class="card-text">${producto.precio}</p>
-                    <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+                    <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
-      contenedorFiltrado.append(card);
-    });
-  };
+    contenedorFiltrado.append(card);
+  });
+};
 
 //DISCOS M2
 inputs[8].onclick = () => {
-    contenedorFiltrado.innerHTML = "";
-    productosFiltrados.length = 0;
-  
-    filtrarProducto(productos[8].categoria);
-  
-    padreProductos.style.display = "none";
-    contenedorFiltrado.style.display = "flex";
-    contenedorFiltrado.className =
-      "contenedorFiltrado w-75 flex-wrap justify-content-center";
-  
-    productosFiltrados[0].forEach((producto) => {
-      const card = document.createElement("div");
-      card.className = "card card-edit col-md-3";
-      card.innerHTML = `
+  contenedorFiltrado.innerHTML = "";
+  productosFiltrados.length = 0;
+
+  filtrarProducto(productos[8].categoria);
+
+  padreProductos.style.display = "none";
+  contenedorFiltrado.style.display = "flex";
+  contenedorFiltrado.className =
+    "contenedorFiltrado w-75 flex-wrap justify-content-center";
+
+  productosFiltrados[0].forEach((producto) => {
+    const card = document.createElement("div");
+    card.className = "card card-edit col-md-3";
+    card.innerHTML = `
                 <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
                     <p class="card-text">${producto.precio}</p>
-                    <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+                    <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
-      contenedorFiltrado.append(card);
-    });
-  };
+    contenedorFiltrado.append(card);
+  });
+};
 
 //COOLERS
 inputs[9].onclick = () => {
-    contenedorFiltrado.innerHTML = "";
-    productosFiltrados.length = 0;
-  
-    filtrarProducto(productos[7].categoria);
-  
-    padreProductos.style.display = "none";
-    contenedorFiltrado.style.display = "flex";
-    contenedorFiltrado.className =
-      "contenedorFiltrado w-75 flex-wrap justify-content-center";
-  
-    productosFiltrados[0].forEach((producto) => {
-      const card = document.createElement("div");
-      card.className = "card card-edit col-md-3";
-      card.innerHTML = `
+  contenedorFiltrado.innerHTML = "";
+  productosFiltrados.length = 0;
+
+  filtrarProducto(productos[7].categoria);
+
+  padreProductos.style.display = "none";
+  contenedorFiltrado.style.display = "flex";
+  contenedorFiltrado.className =
+    "contenedorFiltrado w-75 flex-wrap justify-content-center";
+
+  productosFiltrados[0].forEach((producto) => {
+    const card = document.createElement("div");
+    card.className = "card card-edit col-md-3";
+    card.innerHTML = `
                 <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
                     <p class="card-text">${producto.precio}</p>
-                    <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+                    <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
-      contenedorFiltrado.append(card);
-    });
-  };
+    contenedorFiltrado.append(card);
+  });
+};
 
 // renderizo
 renderizarProductos();
