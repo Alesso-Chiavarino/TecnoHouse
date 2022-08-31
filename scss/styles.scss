@@ -316,6 +316,18 @@ aside {
 .contenedor_contacto {
   .form-control {
     outline: none !important;
+    box-shadow: none !important;
+  }
+  .mensaje {
+    min-height: 150px;
+    max-height: 150px;
+  }
+  .padre_btn_form {
+    display: flex;
+    justify-content: center;
+    .btn_form {
+      max-width: 60%;
+    }
   }
   .input-group-text {
     background-color: black;
@@ -332,7 +344,7 @@ aside {
   .caja {
     margin: 40px 0;
     width: 50%;
-    height: 60vh;
+    height: 600px;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
