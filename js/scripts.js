@@ -24,14 +24,26 @@ botonVaciar.addEventListener("click", () => {
   actualizarCarrito();
 });
 
+function archivos(){
+  fetch("../stock.json")
+      .then((res) => res.json())
+      .then((prods) => {
+        productos = prods
+      });
+}
+
 let contenedorProductos = document.querySelector(".contenedorProductos");
 
 // renderizo las cards en el DOM
 const renderizarProductos = () => {
-  productos.forEach((producto) => {
-    const card = document.createElement("div");
-    card.className = "card card-edit";
-    card.innerHTML = `
+  fetch("../stock.json")
+    .then((res) => res.json())
+    .then((prods) => {
+      let productos = prods;
+      productos.forEach((producto) => {
+        const card = document.createElement("div");
+        card.className = "card card-edit";
+        card.innerHTML = `
         <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
         <div class="card-body">
         <h5 class="card-title">${producto.nombre}</h5>
@@ -39,14 +51,15 @@ const renderizarProductos = () => {
         <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
         </div>
         `;
-    contenedorProductos.appendChild(card);
+        contenedorProductos.appendChild(card);
 
-    const boton = document.getElementById(`agregar${producto.id}`);
+        const boton = document.getElementById(`agregar${producto.id}`);
 
-    boton.addEventListener("click", () => {
-      agregarAlCarrito(producto.id);
+        boton.addEventListener("click", () => {
+          agregarAlCarrito(producto.id);
+        });
+      });
     });
-  });
 };
 
 //
@@ -71,31 +84,37 @@ const agregarAlCarritoProdsFiltrados = (prodID) => {
 
 // funcion para pushear el producto al array carrito
 const agregarAlCarrito = (prodId) => {
-  const item = productos.find((producto) => producto.id === prodId);
-  carrito.push(item);
-  Toastify({
-    text: "Producto: " + item.nombre + " agregado al carrito!",
+  fetch("../stock.json")
+    .then((res) => res.json())
+    .then((prods) => {
+      let productos = prods;
 
-    duration: 3000,
-    close: true,
-    gravity: "bottom",
-    position: "right",
-    style: {
-      width: "300px",
-      background: "#202020",
-    },
-  }).showToast();
-  // Swal.fire({
-  //   position: 'bottom-end',
-  //   icon: 'success',
-  //   text: 'Producto: '+ item.nombre + ' agregado al carrito!',
-  //   showConfirmButton: false,
-  //   timer: 1500,
-  //   width: '200',
-  //   height: '100',
-  //   fontSize: '10'
-  // })
-  actualizarCarrito();
+      const item = productos.find((producto) => producto.id === prodId);
+      carrito.push(item);
+      Toastify({
+        text: "Producto: " + item.nombre + " agregado al carrito!",
+
+        duration: 3000,
+        close: true,
+        gravity: "bottom",
+        position: "right",
+        style: {
+          width: "300px",
+          background: "#202020",
+        },
+      }).showToast();
+      // Swal.fire({
+      //   position: 'bottom-end',
+      //   icon: 'success',
+      //   text: 'Producto: '+ item.nombre + ' agregado al carrito!',
+      //   showConfirmButton: false,
+      //   timer: 1500,
+      //   width: '200',
+      //   height: '100',
+      //   fontSize: '10'
+      // })
+      actualizarCarrito();
+    });
 };
 
 // funcion para eliminar el producto al array carrito
@@ -139,10 +158,16 @@ const actualizarStorage = () =>
   const productosFiltrados = [];
   
   const filtrarProducto = (categoriaProd) => {
-    const categoria = productos.filter(
-      (producto) => producto.categoria === categoriaProd
-    );
-    productosFiltrados.push(categoria);
+    fetch("../stock.json")
+      .then((res) => res.json())
+      .then((prods) => {
+        let productos = prods;
+
+        const categoria = productos.filter(
+          (producto) => producto.categoria === categoriaProd
+        );
+        productosFiltrados.push(categoria);
+      });
   };
   
   let inputs = document.querySelectorAll("#padreInputs input");
