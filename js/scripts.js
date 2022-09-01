@@ -133,18 +133,19 @@ const actualizarCarrito = () => {
 const actualizarStorage = () =>
   localStorage.setItem("carrito", JSON.stringify(carrito));
 
-const productosFiltrados = [];
+  
+  // ------  INTENTO DE FILTRO ;)  ------ //
 
-const filtrarProducto = (categoriaProd) => {
-  const categoria = productos.filter(
-    (producto) => producto.categoria === categoriaProd
-  );
-  productosFiltrados.push(categoria);
-};
-
-let inputs = document.getElementsByTagName("input");
-
-// ------  INTENTO DE FILTRO ;)  ------ //
+  const productosFiltrados = [];
+  
+  const filtrarProducto = (categoriaProd) => {
+    const categoria = productos.filter(
+      (producto) => producto.categoria === categoriaProd
+    );
+    productosFiltrados.push(categoria);
+  };
+  
+  let inputs = document.querySelectorAll("#padreInputs input");
 
 //TODO
 inputs[0].onclick = () => {

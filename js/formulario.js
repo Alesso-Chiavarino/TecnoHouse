@@ -1,16 +1,15 @@
 const formulario = document.getElementById('form-box')
 const inputss = document.querySelectorAll('#formulario, input')
-const textarea = document.getElementById('msg')
+const mensajesError = document.getElementsByClassName('mensaje_error')
 
 const expresiones = {
-	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 	password: /^.{4,12}$/, // 4 a 12 digitos.
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	telefono: /^\d{7,14}$/ // 7 a 14 numeros.
 }
 
-const validar = {
+const validaciones = {
     nombre: nombre = false,
     correo: correo = false,
     telefono: telefono = false,
@@ -21,25 +20,31 @@ const validarFormulario = (e) => {
     case "nombre":
         if(expresiones.nombre.test(e.target.value)) {
             inputss[0].className = 'form-control mb-3 border border-success'
-            validar.nombre = true;
+            mensajesError[0].className = 'mensaje_error d-none'
+            validaciones.nombre = true;
         } else {
             inputss[0].className = 'form-control mb-3 border border-danger'
+            mensajesError[0].className = 'mensaje_error d-block'
         }
       break;
     case "email":
         if(expresiones.correo.test(e.target.value)) {
             inputss[1].className = 'form-control mb-3 border border-success'
-            validar.correo = true;
+            validaciones.correo = true;
+            mensajesError[1].className = 'mensaje_error d-none'
         } else {
             inputss[1].className = 'form-control mb-3 border border-danger'
+            mensajesError[1].className = 'mensaje_error d-block'
         }
         break;
     case "telefono":
         if(expresiones.telefono.test(e.target.value)) {
             inputss[2].className = 'form-control mb-3 border border-success'
-            validar.telefono = true;
+            mensajesError[2].className = 'mensaje_error d-none'
+            validaciones.telefono = true;
         } else {
             inputss[2].className = 'form-control mb-3 border border-danger'
+            mensajesError[2].className = 'mensaje_error d-block'
         }
         break;
   }
@@ -51,7 +56,9 @@ inputss.forEach((input) => {
 })
 
 formulario.addEventListener('submit', (e) => {
-    if((!validar.nombre && !validar.correo && !validar.telefono)) {
+    if((validaciones.nombre && validaciones.correo && validaciones.telefono)) {
+        formulario.reset()
+    } else {
         e.preventDefault();
     }
 });

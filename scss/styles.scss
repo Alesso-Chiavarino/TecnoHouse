@@ -276,7 +276,7 @@ aside {
       cursor: pointer;
     }
   }
-  :last-child {
+  &:last-child {
     margin-bottom: 0.3125em;
   }
   height: fit-content;
@@ -349,4 +349,20 @@ aside {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 }
+
+.icono_error {
+  font-size: 20px;
+  color: #ff0000;
+}
+
+.padre_cont_errores {
+  display: flex;
+  margin-top: 0.625em;
+  margin-bottom: 0.625em;
+}
+.cont_errores {
+  margin: auto;
+  font-size: 0.875em;
+}
+
 @import "responsive.scss";
