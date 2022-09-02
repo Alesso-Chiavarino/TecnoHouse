@@ -1,6 +1,6 @@
 const tbody = document.body;
 let carrito = [];
-let productosJSON = [];
+let productos = [];
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("carrito")) {
@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarCarrito();
   }
 });
-
-localStorage.getItem("carrito") && console.log(carrito);
 
 // declaro variables
 const botonVaciar = document.getElementById("vaciar-carrito");
@@ -31,7 +29,7 @@ let contenedorProductos = document.querySelector(".contenedorProductos");
 
 // renderizo las cards en el DOM
 const renderizarProductos = () => {
-      productosJSON.forEach((producto) => {
+      productos.forEach((producto) => {
         const card = document.createElement("div");
         card.className = "card card-edit";
         card.innerHTML = `
@@ -74,7 +72,7 @@ const agregarAlCarritoProdsFiltrados = (prodID) => {
 
 // funcion para pushear el producto al array carrito
 const agregarAlCarrito = (prodId) => {
-      const item = productosJSON.find((producto) => producto.id === prodId);
+      const item = productos.find((producto) => producto.id === prodId);
       carrito.push(item);
       Toastify({
         text: "Producto: " + item.nombre + " agregado al carrito!",
@@ -143,7 +141,7 @@ const actualizarStorage = () =>
   
   const filtrarProducto = (categoriaProd) => {
     renderizarProductos()
-    const categoria = productosJSON.filter(
+    const categoria = productos.filter(
       (producto) => producto.categoria === categoriaProd
     );
     productosFiltrados.push(categoria);
@@ -166,7 +164,7 @@ inputs[1].onclick = () => {
   inputs[1].checked ? console.log(inputs[1]) : console.log("error");
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
-      filtrarProducto(productosJSON[2].categoria);
+      filtrarProducto(productos[2].categoria);
       padreProductos.style.display = "none";
       contenedorFiltrado.style.display = "flex";
       contenedorFiltrado.className =
@@ -194,7 +192,7 @@ inputs[2].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productosJSON[1].categoria);
+  filtrarProducto(productos[1].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -223,7 +221,7 @@ inputs[3].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productosJSON[0].categoria);
+  filtrarProducto(productos[0].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -250,7 +248,7 @@ inputs[4].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productosJSON[4].categoria);
+  filtrarProducto(productos[4].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -277,7 +275,7 @@ inputs[5].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productosJSON[3].categoria);
+  filtrarProducto(productos[3].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -304,7 +302,7 @@ inputs[6].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productosJSON[5].categoria);
+  filtrarProducto(productos[5].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -331,7 +329,7 @@ inputs[7].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productosJSON[6].categoria);
+  filtrarProducto(productos[6].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -358,7 +356,7 @@ inputs[8].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productosJSON[8].categoria);
+  filtrarProducto(productos[8].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -385,7 +383,7 @@ inputs[9].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productosJSON[7].categoria);
+  filtrarProducto(productos[7].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -414,7 +412,7 @@ renderizarProductos();
 async function obtenerJSON() {
   const res = await fetch('../stock.json')
   const data = await res.json()
-  productosJSON = data
+  productos = data
   renderizarProductos()
 }
 obtenerJSON()
