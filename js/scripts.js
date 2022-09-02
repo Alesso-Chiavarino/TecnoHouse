@@ -24,45 +24,36 @@ botonVaciar.addEventListener("click", () => {
   actualizarCarrito();
 });
 
-function archivos(){
-  fetch("../stock.json")
-      .then((res) => res.json())
-      .then((prods) => {
-        productos = prods
-      });
-}
-
 let contenedorProductos = document.querySelector(".contenedorProductos");
 
 // renderizo las cards en el DOM
 const renderizarProductos = () => {
-  fetch("../stock.json")
-    .then((res) => res.json())
-    .then((prods) => {
-      let productos = prods;
-      productos.forEach((producto) => {
+  fetch('../stock.json')
+    .then(res => res.json())
+    .then(productosJson => {
+      productosJson.forEach((producto) => {
         const card = document.createElement("div");
         card.className = "card card-edit";
         card.innerHTML = `
-        <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">${producto.nombre}</h5>
-        <p class="card-text">${producto.precio}</p>
-        <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
-        </div>
-        `;
+            <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">${producto.nombre}</h5>
+            <p class="card-text">${producto.precio}</p>
+            <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
+            </div>
+            `;
         contenedorProductos.appendChild(card);
-
+    
         const boton = document.getElementById(`agregar${producto.id}`);
-
+    
         boton.addEventListener("click", () => {
           agregarAlCarrito(producto.id);
         });
       });
-    });
+    })
+  
 };
 
-//
 const agregarAlCarritoProdsFiltrados = (prodID) => {
   const item = productosFiltrados[0].find((prod) => prod.id === prodID);
   carrito.push(item);
@@ -86,10 +77,8 @@ const agregarAlCarritoProdsFiltrados = (prodID) => {
 const agregarAlCarrito = (prodId) => {
   fetch("../stock.json")
     .then((res) => res.json())
-    .then((prods) => {
-      let productos = prods;
-
-      const item = productos.find((producto) => producto.id === prodId);
+    .then((productosJson) => {
+      const item = productosJson.find((producto) => producto.id === prodId);
       carrito.push(item);
       Toastify({
         text: "Producto: " + item.nombre + " agregado al carrito!",
@@ -103,16 +92,16 @@ const agregarAlCarrito = (prodId) => {
           background: "#202020",
         },
       }).showToast();
-      // Swal.fire({
-      //   position: 'bottom-end',
-      //   icon: 'success',
-      //   text: 'Producto: '+ item.nombre + ' agregado al carrito!',
-      //   showConfirmButton: false,
-      //   timer: 1500,
-      //   width: '200',
-      //   height: '100',
-      //   fontSize: '10'
-      // })
+  // Swal.fire({
+  //   position: 'bottom-end',
+  //   icon: 'success',
+  //   text: 'Producto: '+ item.nombre + ' agregado al carrito!',
+  //   showConfirmButton: false,
+  //   timer: 1500,
+  //   width: '200',
+  //   height: '100',
+  //   fontSize: '10'
+  // })
       actualizarCarrito();
     });
 };
@@ -158,16 +147,10 @@ const actualizarStorage = () =>
   const productosFiltrados = [];
   
   const filtrarProducto = (categoriaProd) => {
-    fetch("../stock.json")
-      .then((res) => res.json())
-      .then((prods) => {
-        let productos = prods;
-
-        const categoria = productos.filter(
-          (producto) => producto.categoria === categoriaProd
-        );
-        productosFiltrados.push(categoria);
-      });
+    const categoria = productos.filter(
+      (producto) => producto.categoria === categoriaProd
+    );
+    productosFiltrados.push(categoria);
   };
   
   let inputs = document.querySelectorAll("#padreInputs input");
@@ -185,18 +168,19 @@ inputs[1].onclick = () => {
   inputs[1].checked ? console.log(inputs[1]) : console.log("error");
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
+  fetch("../stock.json")
+    .then((res) => res.json())
+    .then((productosJson) => {
+      filtrarProducto(productosJson[2].categoria);
+      padreProductos.style.display = "none";
+      contenedorFiltrado.style.display = "flex";
+      contenedorFiltrado.className =
+        "contenedorFiltrado w-75 flex-wrap justify-content-center";
 
-  filtrarProducto(productos[2].categoria);
-
-  padreProductos.style.display = "none";
-  contenedorFiltrado.style.display = "flex";
-  contenedorFiltrado.className =
-    "contenedorFiltrado w-75 flex-wrap justify-content-center";
-
-  productosFiltrados[0].forEach((producto) => {
-    const card = document.createElement("div");
-    card.className = "card card-edit col-md-3";
-    card.innerHTML = `
+      productosFiltrados[0].forEach((producto) => {
+        const card = document.createElement("div");
+        card.className = "card card-edit col-md-3";
+        card.innerHTML = `
             <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
@@ -204,8 +188,9 @@ inputs[1].onclick = () => {
                 <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
             </div>
             `;
-    contenedorFiltrado.append(card);
-  });
+        contenedorFiltrado.append(card);
+      });
+    });
 };
 
 //PROCESADORES
