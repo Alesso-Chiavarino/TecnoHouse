@@ -1,5 +1,6 @@
 const tbody = document.body;
 let carrito = [];
+let productosJSON = [];
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("carrito")) {
@@ -24,14 +25,13 @@ botonVaciar.addEventListener("click", () => {
   actualizarCarrito();
 });
 
+
+
 let contenedorProductos = document.querySelector(".contenedorProductos");
 
 // renderizo las cards en el DOM
 const renderizarProductos = () => {
-  fetch('../stock.json')
-    .then(res => res.json())
-    .then(productosJson => {
-      productosJson.forEach((producto) => {
+      productosJSON.forEach((producto) => {
         const card = document.createElement("div");
         card.className = "card card-edit";
         card.innerHTML = `
@@ -50,7 +50,6 @@ const renderizarProductos = () => {
           agregarAlCarrito(producto.id);
         });
       });
-    })
   
 };
 
@@ -75,10 +74,7 @@ const agregarAlCarritoProdsFiltrados = (prodID) => {
 
 // funcion para pushear el producto al array carrito
 const agregarAlCarrito = (prodId) => {
-  fetch("../stock.json")
-    .then((res) => res.json())
-    .then((productosJson) => {
-      const item = productosJson.find((producto) => producto.id === prodId);
+      const item = productosJSON.find((producto) => producto.id === prodId);
       carrito.push(item);
       Toastify({
         text: "Producto: " + item.nombre + " agregado al carrito!",
@@ -103,7 +99,6 @@ const agregarAlCarrito = (prodId) => {
   //   fontSize: '10'
   // })
       actualizarCarrito();
-    });
 };
 
 // funcion para eliminar el producto al array carrito
@@ -147,7 +142,8 @@ const actualizarStorage = () =>
   const productosFiltrados = [];
   
   const filtrarProducto = (categoriaProd) => {
-    const categoria = productos.filter(
+    renderizarProductos()
+    const categoria = productosJSON.filter(
       (producto) => producto.categoria === categoriaProd
     );
     productosFiltrados.push(categoria);
@@ -160,6 +156,8 @@ inputs[0].onclick = () => {
   productosFiltrados.length = 0;
   padreProductos.style.display = "flex";
   contenedorFiltrado.style.display = "none";
+  padreProductos.innerHTML = ''
+  renderizarProductos()
 };
 
 //PLACAS
@@ -168,10 +166,7 @@ inputs[1].onclick = () => {
   inputs[1].checked ? console.log(inputs[1]) : console.log("error");
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
-  fetch("../stock.json")
-    .then((res) => res.json())
-    .then((productosJson) => {
-      filtrarProducto(productosJson[2].categoria);
+      filtrarProducto(productosJSON[2].categoria);
       padreProductos.style.display = "none";
       contenedorFiltrado.style.display = "flex";
       contenedorFiltrado.className =
@@ -190,7 +185,6 @@ inputs[1].onclick = () => {
             `;
         contenedorFiltrado.append(card);
       });
-    });
 };
 
 //PROCESADORES
@@ -200,7 +194,7 @@ inputs[2].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productos[1].categoria);
+  filtrarProducto(productosJSON[1].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -220,7 +214,6 @@ inputs[2].onclick = () => {
             `;
     contenedorFiltrado.append(card);
   });
-  actualizarCarrito();
 };
 
 //PLACAS DE VIDEO
@@ -230,7 +223,7 @@ inputs[3].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productos[0].categoria);
+  filtrarProducto(productosJSON[0].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -257,7 +250,7 @@ inputs[4].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productos[4].categoria);
+  filtrarProducto(productosJSON[4].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -284,7 +277,7 @@ inputs[5].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productos[3].categoria);
+  filtrarProducto(productosJSON[3].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -311,7 +304,7 @@ inputs[6].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productos[5].categoria);
+  filtrarProducto(productosJSON[5].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -338,7 +331,7 @@ inputs[7].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productos[6].categoria);
+  filtrarProducto(productosJSON[6].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -365,7 +358,7 @@ inputs[8].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productos[8].categoria);
+  filtrarProducto(productosJSON[8].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -392,7 +385,7 @@ inputs[9].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
-  filtrarProducto(productos[7].categoria);
+  filtrarProducto(productosJSON[7].categoria);
 
   padreProductos.style.display = "none";
   contenedorFiltrado.style.display = "flex";
@@ -417,3 +410,11 @@ inputs[9].onclick = () => {
 // renderizo
 renderizarProductos();
 
+//funcion asincrona para obtener datos del JSON
+async function obtenerJSON() {
+  const res = await fetch('../stock.json')
+  const data = await res.json()
+  productosJSON = data
+  renderizarProductos()
+}
+obtenerJSON()
