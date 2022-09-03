@@ -43,7 +43,7 @@ const renderizarProductos = () => {
         contenedorProductos.appendChild(card);
     
         const boton = document.getElementById(`agregar${producto.id}`);
-    
+
         boton.addEventListener("click", () => {
           agregarAlCarrito(producto.id);
         });
@@ -416,3 +416,4 @@ async function obtenerJSON() {
   renderizarProductos()
 }
 obtenerJSON()
+

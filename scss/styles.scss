@@ -365,4 +365,155 @@ aside {
   font-size: 0.875em;
 }
 
+
+
+
+
+
+
+.finalizarCompra {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: white;
+  // padding: 2.5rem;
+  .padre_cont_prods {
+    width: 35%;
+    margin-right: 50px;
+    // position: relative;
+    // top: 0px;
+    // margin-top: -450px;
+    .productos_finalizarCompra {
+      // float: left;
+      // padding: 0;
+        // margin-top: 1rem;
+        .producto_finalizarCompra {
+          margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            img {
+                width: 80px;
+                height: 80px;
+            }
+            p:nth-child(2) {
+                text-align: center;
+            }
+            // p:last-child {
+            //     &:before {
+            //         content: '$'
+            //     }
+            // }
+        }
+        // .total {
+        //     display: flex;
+        //     flex-direction: row;
+        //     justify-content: space-between;
+        //     // p:last-child {
+        //     //     &:before {
+        //     //         content: '$'
+        //     //     }
+        //     // }
+        // }
+    }
+    .cont_total {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  h1 {
+      text-align: center;
+      padding-top: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgb(0, 0, 0);
+      margin-bottom: 2rem;
+  }
+  .datosPersonales_finalizarCompra {
+    width: 50%;
+      .tarjeta_finalizarCompra {
+        color: #fff;
+          padding:22px;
+          background-color: #1b1b1b;
+          border-radius: 20px;
+          margin-bottom: 1rem;
+          img {
+              width: 54px;
+              margin-bottom: 1rem;
+          }
+          label {
+              margin-bottom: 2px;
+          }
+          input {
+              border-top: none;
+              border-left: none;
+              border-right: none;
+              border-bottom: 1px solid #000;
+              background: #C4C4C4;
+              margin-bottom: 1rem;
+              &:focus {
+                  outline: none;
+                  border-bottom: 1px solid #1877f2;
+              }
+          }
+          .izquierda_tarjeta {
+            width: 40%;
+              display: flex;
+              flex-direction: column;
+              input {
+                  font-size: 22px;
+              }
+              
+              input:last-child {
+                  width: 15%;
+              }
+          }
+          .derecha_tarjeta {
+            width: 40%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              input {
+                  width: 80%;
+              }
+          }
+      }
+  }
+  
+}
+
+.cont_mensaje {
+  display: flex;
+  justify-content: center;
+  height: 100vh !important;
+  width: 100% !important;
+  background: rgb(34, 34, 34);
+  align-items: center;
+  .compraFinalizada {
+    margin-top: -150px;
+    color: #fff;
+    text-align: center;
+    padding: 2.5rem;
+    border-radius: 5px;
+    h3 {
+        margin-bottom: 22px;
+    }
+    span {
+        &.greenColor {
+            color: #12ec62;
+        }
+    }
+    p:last-child {
+        margin-bottom: 0;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
 @import "responsive.scss";
