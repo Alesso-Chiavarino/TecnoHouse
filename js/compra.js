@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
     btnCompra.onclick = (e) => {
 
       if((validaciones.nombre && validaciones.correo && validaciones.telefono && validaciones.numTarjeta && validaciones.nomTarjeta && validaciones.cvcTarjeta && validaciones.hastaTarjeta)) {
-        alert("compraste");
         carrito.length = 0;
         actualizarStorage();
         cont_compra.innerHTML = "";
@@ -128,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `;
       } else {
+        errorCompra.className = 'text-bg-danger rounded-1 d-block'
         e.preventDefault()
       }
     };

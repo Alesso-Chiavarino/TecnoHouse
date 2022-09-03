@@ -378,43 +378,28 @@ aside {
   // padding: 2.5rem;
   .padre_cont_prods {
     width: 35%;
-    margin-right: 50px;
-    // position: relative;
-    // top: 0px;
-    // margin-top: -450px;
+    margin-right: 3.125em;
     .productos_finalizarCompra {
-      // float: left;
-      // padding: 0;
-        // margin-top: 1rem;
         .producto_finalizarCompra {
-          margin-bottom: 20px;
+          // margin-bottom: 1.25em;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
             img {
-                width: 80px;
-                height: 80px;
+                width: 5em;
+                height: 5em;
             }
-            p:nth-child(2) {
+            p {
+              margin: 0 !important;
+              &:nth-child(2) {
                 text-align: center;
+              }
             }
-            // p:last-child {
-            //     &:before {
-            //         content: '$'
-            //     }
-            // }
         }
-        // .total {
-        //     display: flex;
-        //     flex-direction: row;
-        //     justify-content: space-between;
-        //     // p:last-child {
-        //     //     &:before {
-        //     //         content: '$'
-        //     //     }
-        //     // }
-        // }
+    }
+    hr {
+      margin: 10px !important;
     }
     .cont_total {
       display: flex;
@@ -423,26 +408,26 @@ aside {
   }
   h1 {
       text-align: center;
-      padding-top: 1rem;
-      padding-bottom: 0.5rem;
+      padding-top: 1em;
+      padding-bottom: 0.5em;
       border-bottom: 1px solid rgb(0, 0, 0);
-      margin-bottom: 2rem;
+      margin-bottom: 0.7em;
   }
   .datosPersonales_finalizarCompra {
     width: 50%;
       .tarjeta_finalizarCompra {
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         color: #fff;
-          padding:22px;
+          padding:1.375em;
           background-color: #1b1b1b;
-          border-radius: 20px;
-          margin-bottom: 1rem;
+          border-radius: 1.25em;
+          margin-bottom: 1em;
           img {
-              width: 54px;
-              margin-bottom: 1rem;
+              width: 3.375em;
+              margin-bottom: 1em;
           }
           label {
-              margin-bottom: 2px;
+              margin-bottom: 0.125em;
           }
           input {
             color: #fff;
@@ -450,7 +435,7 @@ aside {
               border-left: none;
               border-right: none;
               background: none !important;
-              margin-bottom: 1rem;
+              margin-bottom: 1em;
               outline: none;
               // &:focus {
               // }
@@ -460,7 +445,7 @@ aside {
               display: flex;
               flex-direction: column;
               input {
-                  font-size: 16px;
+                  font-size: 1em;
               }
               
               input:last-child {
@@ -489,13 +474,13 @@ aside {
   background: rgb(34, 34, 34);
   align-items: center;
   .compraFinalizada {
-    margin-top: -150px;
+    margin-top: -9.375em;
     color: #fff;
     text-align: center;
-    padding: 2.5rem;
+    padding: 2.5em;
     border-radius: 5px;
     h3 {
-        margin-bottom: 22px;
+        margin-bottom: 1.375em;
     }
     span {
         &.greenColor {
