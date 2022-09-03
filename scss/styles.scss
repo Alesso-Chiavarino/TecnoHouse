@@ -444,16 +444,15 @@ aside {
               margin-bottom: 2px;
           }
           input {
+            color: #fff;
               border-top: none;
               border-left: none;
               border-right: none;
-              border-bottom: 1px solid #000;
-              background: #C4C4C4;
+              background: none !important;
               margin-bottom: 1rem;
-              &:focus {
-                  outline: none;
-                  border-bottom: 1px solid #1877f2;
-              }
+              outline: none;
+              // &:focus {
+              // }
           }
           .izquierda_tarjeta {
             width: 40%;
