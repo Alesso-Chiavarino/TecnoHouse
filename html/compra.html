@@ -88,16 +88,16 @@
             <form id="formulario_compra" action="">
                 <div class="form-group mb-2">
                     <label for="">Nombre</label>
-                    <input class="form-control" placeholder="John Doe" type="text" required>
+                    <input name="nombre" class="form-control" placeholder="John Doe" type="text">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Email</label>
-                    <input class="form-control" placeholder="john@gmail.com" type="email" required>
+                    <input name="correo" class="form-control" placeholder="john@gmail.com" type="email">
                 </div>
                 <div class="form-group mb-4 d-flex flex-row flex-wrap telefono">
                     <label class="w-100" for="" >Telefono</label>
                     <!-- <input class="form-control col-xs-1 col-md-2"  type="text" placeholder="011"> -->
-                    <input class="form-control type="text" placeholder="3513079987" required>
+                    <input name="telefono" class="form-control type="text" placeholder="3513079987">
                 </div>
                 <!-- <div class="form-group cuotas">
                     <select class="form-control" name="" id="">
@@ -116,21 +116,21 @@
                         </div>
                         <div class="izquierda_tarjeta">
                             <label for="">Número de tarjeta</label>
-                            <input class="numeroDeTarjeta" type="text" name="" id="" placeholder="0000 - 0000 - 0000 - 0000" required>
+                            <input class="numeroDeTarjeta" type="text" name="num_tarjeta" id="" placeholder="0000 - 0000 - 0000 - 0000">
                             <label for="">Nombre</label>
-                            <input type="text" name="" id="" placeholder="JOHN DOE" required>
-                            <label for="">cvc</label>
-                            <input type="text" name="" id="" placeholder="000" required>
+                            <input type="text" name="nom_tarjeta" id="" placeholder="JOHN DOE">
+                            <label for="">CVC</label>
+                            <input type="text" name="cvc_tarjeta" id="" placeholder="000">
                         </div>
                         <div class="derecha_tarjeta">
-                            <div class="row">
-                                <div class="col-md-6">
+                            <div class="row justify-content-end">
+                                <!-- <div class="col-md-6">
                                     <label for="">Desde</label>
-                                    <input type="text" name="" id="" placeholder="00/00" required>
-                                </div>
+                                    <input type="text" name="desde_tarjeta" id="" placeholder="00/00">
+                                </div> -->
                                 <div class="col-md-6">
                                     <label for="">Hasta</label>
-                                    <input type="text" name="" id="" placeholder="00/00" required>
+                                    <input type="text" name="hasta_tarjeta" id="" placeholder="00/00">
                                 </div>
                             </div>
                             
@@ -138,8 +138,9 @@
                         </div>
                     </div>
                 </div>
+                <p id="error_compra" class="text-bg-danger rounded-1 d-none"><i class="fa-solid fa-triangle-exclamation text-white mx-2"></i>Por favor, rellene los datos correctamente</p>
                 <div class="form-group">
-                    <input id="btn_compra_definitiva" class="btn btn-success mt-2 mb-5" type="button" value="Confirmar compra">
+                    <input id="btn_compra_definitiva" class="btn btn-success mt-2 mb-5" type="submit" value="Confirmar compra">
                 </div>
             </form>
         </div>

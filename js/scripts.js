@@ -36,7 +36,7 @@ const renderizarProductos = () => {
             <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
             <div class="card-body">
             <h5 class="card-title">${producto.nombre}</h5>
-            <p class="card-text">${producto.precio}</p>
+            <p class="card-text">$ ${producto.precio}</p>
             <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
             </div>
             `;
@@ -177,7 +177,7 @@ inputs[1].onclick = () => {
             <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
-                <p class="card-text">${producto.precio}</p>
+                <p class="card-text">$ ${producto.precio}</p>
                 <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
             </div>
             `;
@@ -206,7 +206,7 @@ inputs[2].onclick = () => {
             <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
-                <p class="card-text">${producto.precio}</p>
+                <p class="card-text">$ ${producto.precio}</p>
                 <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
             </div>
             `;
@@ -235,7 +235,7 @@ inputs[3].onclick = () => {
               <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
               <div class="card-body">
                   <h5 class="card-title">${producto.nombre}</h5>
-                  <p class="card-text">${producto.precio}</p>
+                  <p class="card-text">$ ${producto.precio}</p>
                   <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
               </div>
               `;
@@ -262,7 +262,7 @@ inputs[4].onclick = () => {
                 <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
-                    <p class="card-text">${producto.precio}</p>
+                    <p class="card-text">$ ${producto.precio}</p>
                     <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
@@ -289,7 +289,7 @@ inputs[5].onclick = () => {
                 <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
-                    <p class="card-text">${producto.precio}</p>
+                    <p class="card-text">$ ${producto.precio}</p>
                     <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
@@ -316,7 +316,7 @@ inputs[6].onclick = () => {
                 <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
-                    <p class="card-text">${producto.precio}</p>
+                    <p class="card-text">$ ${producto.precio}</p>
                     <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
@@ -343,7 +343,7 @@ inputs[7].onclick = () => {
                 <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
-                    <p class="card-text">${producto.precio}</p>
+                    <p class="card-text">$ ${producto.precio}</p>
                     <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
@@ -370,7 +370,7 @@ inputs[8].onclick = () => {
                 <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
-                    <p class="card-text">${producto.precio}</p>
+                    <p class="card-text">$ ${producto.precio}</p>
                     <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
@@ -397,7 +397,7 @@ inputs[9].onclick = () => {
                 <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
-                    <p class="card-text">${producto.precio}</p>
+                    <p class="card-text">$ ${producto.precio}</p>
                     <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
                 </div>
                 `;
