@@ -200,6 +200,15 @@ footer {
   }
 }
 
+.footer_hover {
+    &:hover {
+      color: rgb(141, 141, 141) !important;
+    }
+}
+// .text-secondary {
+ 
+// }
+
 .redes-sociales {
   width: 25%;
   padding-right: 15.625em;
@@ -365,11 +374,19 @@ aside {
   font-size: 0.875em;
 }
 
+// FOOTER
 
 
 
 
 
+
+
+
+
+
+
+// COMPRA
 
 .finalizarCompra {
   display: flex;

@@ -112,12 +112,13 @@ document.addEventListener("DOMContentLoaded", () => {
     btnCompra.onclick = (e) => {
 
       if((validaciones.nombre && validaciones.correo && validaciones.telefono && validaciones.numTarjeta && validaciones.nomTarjeta && validaciones.cvcTarjeta && validaciones.hastaTarjeta)) {
+        window.scrollTo(0,0)
         carrito.length = 0;
         actualizarStorage();
         cont_compra.innerHTML = "";
         cont_mensaje.className = "cont_mensaje d-flex";
         cont_mensaje.innerHTML = `
-          <div class="compraFinalizada col-md-12">
+          <div id="parte_compra_finalizada" class="compraFinalizada col-md-12">
             <h3>¡Gracias <span class="text-danger">${inputsss[0].value}</span> por elegirnos!</h3>
             <p>¡El pago fue realizado con éxito!</p>
             <p>Corroborá las instrucciones de retiro en tu correo: <span class="text-danger"> ${inputsss[1].value}</span></p>
@@ -132,6 +133,26 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
   });
+  //scroll
+  // const parte_compra_finalizada = document.getElementById('parte_compra_finalizada')
+  // const funcionObserver = entries => {
+  //   entries.forEach(entry => {
+  //     if(entry.isIntersecting) {
+  //       const itemActual = 
+  //     }
+  //   })
+  // }
+  // const observer = new IntersectionObserver(funcionObserver, {
+  //   root: null,
+  //   rootMargin: '0px',
+  //   threshold: 0.8
+  // })
+// $(btnCompra).on('click', function(){
+//   $('html, body').animate({
+//     scrollTop: 380
+//   }, 500)
+// })
+
 });  
 
 

@@ -30,17 +30,3 @@ $(document).ready(function(){
         },
     });
 });
-
-// $(document).ready(function(){
-//     $("#owl2").owlCarousel({
-//         nav: true,
-//         navText: ["<i class='fas fa-chevron-left f-color-l'></i>","<i class='fas fa-chevron-right f-color-r'></i>"],
-//         slideBy: 1,
-//         items:1,
-//         dots: false,
-//         margin:10,
-//         autoplay: true,
-//         autoplayTimeout:4000,
-//         loop: true,
-//     });
-// });

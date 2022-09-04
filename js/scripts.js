@@ -56,7 +56,6 @@ const renderizarProductos = () => {
 const agregarAlCarritoProdsFiltrados = (prodID) => {
   const item = productosFiltrados[0].find((prod) => prod.id === prodID);
   carrito.push(item);
-  console.log(item);
   Toastify({
     text: "Producto: " + item.nombre + " agregado al carrito!",
 
@@ -88,16 +87,6 @@ const agregarAlCarrito = (prodId) => {
           background: "#202020",
         },
       }).showToast();
-  // Swal.fire({
-  //   position: 'bottom-end',
-  //   icon: 'success',
-  //   text: 'Producto: '+ item.nombre + ' agregado al carrito!',
-  //   showConfirmButton: false,
-  //   timer: 1500,
-  //   width: '200',
-  //   height: '100',
-  //   fontSize: '10'
-  // })
       actualizarCarrito();
 };
 
@@ -171,8 +160,6 @@ inputs[0].onclick = () => {
 
 //PLACAS
 inputs[1].onclick = () => {
-  //operador ternario
-  inputs[1].checked ? console.log(inputs[1]) : console.log("error");
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
       filtrarProducto(productos[2].categoria);
@@ -198,8 +185,6 @@ inputs[1].onclick = () => {
 
 //PROCESADORES
 inputs[2].onclick = () => {
-  //con operador logico and
-  inputs[2].checked && console.log(inputs[2])
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 
@@ -227,8 +212,6 @@ inputs[2].onclick = () => {
 
 //PLACAS DE VIDEO
 inputs[3].onclick = () => {
-  //operador logico or
-  !inputs[3].checked || console.log(inputs[3]);
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
 

@@ -65,6 +65,9 @@
         width: 90%;
         margin: auto;
         margin-top: 70px !important;
+        .izquierda_tarjeta, .derecha_tarjeta {
+            font-size: 0.7em !important;
+        }
     }
 }
 
@@ -187,7 +190,7 @@
     }
     //compra
     .izquierda_tarjeta, .derecha_tarjeta {
-        font-size: 12px;
+        font-size: 12px !important;
     }
 }
 
