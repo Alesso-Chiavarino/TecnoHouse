@@ -16,6 +16,8 @@ const contadorCarrito = document.getElementById("contadorCarrito");
 const precioTotal = document.getElementById("precioTotal");
 const padreProductos = document.getElementById("contenedorProductos");
 const contenedorFiltrado = document.getElementById("contenedorFiltrado");
+const btn_Comprar = document.getElementById('btn_ir_comprar')
+const mensajeAgrega = document.getElementById('mensaje_agrega')
 
 botonVaciar.addEventListener("click", () => {
   carrito.length = 0;
@@ -109,8 +111,16 @@ const eliminarDelCarrito = (prodID) => {
 };
 
 const actualizarCarrito = () => {
+  if(carrito.length != 0) {
+    botonVaciar.className = 'btn btn-danger m-4 d-inline'
+    btn_Comprar.className = 'btn btn-success m-4 d-inline border-0'
+    mensajeAgrega.className = 'd-none'
+  } else {
+    mensajeAgrega.className = 'd-inline'
+    botonVaciar.className = 'btn btn-danger m-4 d-none'
+    btn_Comprar.className = 'btn btn-success m-4 d-none'
+  }
   contenedorCarrito.innerHTML = "";
-
   carrito.forEach((producto) => {
     const cardCarrito = document.createElement("div");
     cardCarrito.className = "card-carrito col-md-3";
@@ -123,6 +133,7 @@ const actualizarCarrito = () => {
             </div>
             <button onclick ="eliminarDelCarrito(${producto.id})" class="btn btn-danger">-</button>
         </div>
+        <hr>
         `;
     contenedorCarrito.appendChild(cardCarrito);
     actualizarStorage();
