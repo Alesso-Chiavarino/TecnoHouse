@@ -50,15 +50,16 @@
         <div class="offcanvas offcanvas-end text-bg-white" tabindex="-1" id="offcanvasDarkNavbar"
           aria-labelledby="offcanvasDarkNavbarLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Carrito</h5>
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><span class="fa-solid fa-cart-shopping text-black"></span> Carrito</h5>
             <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas"
               aria-label="Close"></button>
           </div>
+          <hr class="d-block w-90 m-0 mx-auto">
           <div class="offcanvas-body">
             <!-- <hr> -->
             <div id="carrito-contenedor"></div>
             <p id="mensaje_agrega">Agregá lo que quieras al carrito!</p>
-            <p class="mt-2 fw-bold">Total: $<span id="precioTotal">0</span></p>
+            <p class="mt-4 fw-bold">Total: $<span id="precioTotal">0</span></p>
             <button id="vaciar-carrito" class="btn btn-danger m-4 d-none">Vaciar Carrito</button>
             <a class="text-decoration-none" href="./compra.html"><button id="btn_ir_comprar" class="btn btn-success m-4">Comprar</button></a>
           </div>
