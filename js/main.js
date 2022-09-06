@@ -1,15 +1,8 @@
-const tbody = document.body;
+// declaro variables
+
 let carrito = [];
 let productos = [];
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("carrito")) {
-    carrito = JSON.parse(localStorage.getItem("carrito"));
-    actualizarCarrito();
-  }
-});
-
-// declaro variables
+const tbody = document.body;
 const botonVaciar = document.getElementById("vaciar-carrito");
 const contenedorCarrito = document.getElementById("carrito-contenedor");
 const contadorCarrito = document.getElementById("contadorCarrito");
@@ -19,6 +12,16 @@ const contenedorFiltrado = document.getElementById("contenedorFiltrado");
 const btn_Comprar = document.getElementById('btn_ir_comprar')
 const mensajeAgrega = document.getElementById('mensaje_agrega')
 
+// cuando el documento este cargado, utilizo local storage
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("carrito")) {
+    carrito = JSON.parse(localStorage.getItem("carrito"));
+    actualizarCarrito();
+  }
+});
+
+
+//evento que me permite poner la longitud del carrito en 0
 botonVaciar.addEventListener("click", () => {
   carrito.length = 0;
   actualizarStorage();
@@ -29,12 +32,12 @@ botonVaciar.addEventListener("click", () => {
 
 let contenedorProductos = document.querySelector(".contenedorProductos");
 
-// renderizo las cards en el DOM
+// función para renderizar las cards en el DOM
 const renderizarProductos = () => {
-      productos.forEach((producto) => {
-        const card = document.createElement("div");
-        card.className = "card card-edit";
-        card.innerHTML = `
+  productos.forEach((producto) => {
+    const card = document.createElement("div");
+    card.className = "card card-edit";
+    card.innerHTML = `
             <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
             <div class="card-body">
             <h5 class="card-title">${producto.nombre}</h5>
@@ -42,17 +45,18 @@ const renderizarProductos = () => {
             <button id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
             </div>
             `;
-        contenedorProductos.appendChild(card);
-    
-        const boton = document.getElementById(`agregar${producto.id}`);
+    contenedorProductos.appendChild(card);
 
-        boton.addEventListener("click", () => {
-          agregarAlCarrito(producto.id);
-        });
-      });
-  
+    const boton = document.getElementById(`agregar${producto.id}`);
+
+    boton.addEventListener("click", () => {
+      agregarAlCarrito(producto.id);
+    });
+  });
+
 };
 
+// función para agregar al carrito los productos que esten filtrados
 const agregarAlCarritoProdsFiltrados = (prodID) => {
   const item = productosFiltrados[0].find((prod) => prod.id === prodID);
   carrito.push(item);
@@ -73,21 +77,21 @@ const agregarAlCarritoProdsFiltrados = (prodID) => {
 
 // funcion para pushear el producto al array carrito
 const agregarAlCarrito = (prodId) => {
-      const item = productos.find((producto) => producto.id === prodId);
-      carrito.push(item);
-      Toastify({
-        text: "Producto: " + item.nombre + " agregado al carrito!",
+  const item = productos.find((producto) => producto.id === prodId);
+  carrito.push(item);
+  Toastify({
+    text: "Producto: " + item.nombre + " agregado al carrito!",
 
-        duration: 3000,
-        close: true,
-        gravity: "bottom",
-        position: "right",
-        style: {
-          width: "300px",
-          background: "#202020",
-        },
-      }).showToast();
-      actualizarCarrito();
+    duration: 3000,
+    close: true,
+    gravity: "bottom",
+    position: "right",
+    style: {
+      width: "300px",
+      background: "#202020",
+    },
+  }).showToast();
+  actualizarCarrito();
 };
 
 // funcion para eliminar el producto al array carrito
@@ -99,8 +103,9 @@ const eliminarDelCarrito = (prodID) => {
   actualizarCarrito();
 };
 
+// esta funcion me permite controlar la longitud del carrito, y ademas rendirizar lo que tenga en el
 const actualizarCarrito = () => {
-  if(carrito.length != 0) {
+  if (carrito.length != 0) {
     botonVaciar.className = 'btn btn-danger m-4 d-inline'
     btn_Comprar.className = 'btn btn-success m-4 d-inline border-0'
     mensajeAgrega.className = 'd-none'
@@ -134,20 +139,24 @@ const actualizarCarrito = () => {
 const actualizarStorage = () =>
   localStorage.setItem("carrito", JSON.stringify(carrito));
 
-  
-  // ------  INTENTO DE FILTRO ;)  ------ //
 
-  const productosFiltrados = [];
-  
-  const filtrarProducto = (categoriaProd) => {
-    renderizarProductos()
-    const categoria = productos.filter(
-      (producto) => producto.categoria === categoriaProd
-    );
-    productosFiltrados.push(categoria);
-  };
-  
-  let inputs = document.querySelectorAll("#padreInputs input");
+// ------  INTENTO DE FILTRO ;)  ------ //  <- esto lo llamé así cuando lo hice porque me parecia que la forma que tuve de escribir el codigo era poco ortodoxa jajaaj :)
+
+const productosFiltrados = [];
+
+// función que me permite comprobar y filtrar el producto que seleccionemos y guardarlo en mi array de productosFiltrados
+const filtrarProducto = (categoriaProd) => {
+  renderizarProductos()
+  const categoria = productos.filter(
+    (producto) => producto.categoria === categoriaProd
+  );
+  productosFiltrados.push(categoria);
+};
+
+let inputs = document.querySelectorAll("#padreInputs input");
+
+
+// A continuación, son eventos que me si presiono x input me va a mostrar la categoria x que elija, esto fue lo que más le di vueltas a hacer, intenté hacer algo más escalable pero no se me ocurrió, seguro con react con el uso de componentes puedo hacer algo mucho mejor
 
 //TODO
 inputs[0].onclick = () => {
@@ -162,16 +171,16 @@ inputs[0].onclick = () => {
 inputs[1].onclick = () => {
   contenedorFiltrado.innerHTML = "";
   productosFiltrados.length = 0;
-      filtrarProducto(productos[2].categoria);
-      padreProductos.style.display = "none";
-      contenedorFiltrado.style.display = "flex";
-      contenedorFiltrado.className =
-        "contenedorFiltrado w-75 flex-wrap justify-content-center";
+  filtrarProducto(productos[2].categoria);
+  padreProductos.style.display = "none";
+  contenedorFiltrado.style.display = "flex";
+  contenedorFiltrado.className =
+    "contenedorFiltrado w-75 flex-wrap justify-content-center";
 
-      productosFiltrados[0].forEach((producto) => {
-        const card = document.createElement("div");
-        card.className = "card card-edit col-md-3";
-        card.innerHTML = `
+  productosFiltrados[0].forEach((producto) => {
+    const card = document.createElement("div");
+    card.className = "card card-edit col-md-3";
+    card.innerHTML = `
             <img src="${producto.imagen}" class="card-img-top img-producto" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
@@ -179,8 +188,8 @@ inputs[1].onclick = () => {
                 <button onclick="agregarAlCarritoProdsFiltrados(${producto.id})" id="agregar${producto.id}" class="btn btn-dark">Agregar <i class="fas-fa-shopping-cart"</i></button>
             </div>
             `;
-        contenedorFiltrado.append(card);
-      });
+    contenedorFiltrado.append(card);
+  });
 };
 
 //PROCESADORES
@@ -402,7 +411,7 @@ inputs[9].onclick = () => {
 // renderizo
 renderizarProductos();
 
-//funcion asincrona para obtener datos del JSON
+//funcion asincrona para obtener datos del JSON ( gracias profe por la idea, :) ©Lau )
 async function obtenerJSON() {
   const res = await fetch('../stock.json')
   const data = await res.json()

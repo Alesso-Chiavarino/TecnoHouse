@@ -1,15 +1,15 @@
 // Carrousel
 
-$(document).ready(function(){
+$(document).ready(function () {
     $(".owl-carousel").owlCarousel({
         nav: true,
-        navText: ["<i class='fas fa-chevron-left f-color-l'></i>","<i class='fas fa-chevron-right f-color-r'></i>"],
+        navText: ["<i class='fas fa-chevron-left f-color-l'></i>", "<i class='fas fa-chevron-right f-color-r'></i>"],
         slideBy: 1,
-        items:4,
+        items: 4,
         dots: false,
-        margin:10,
+        margin: 10,
         autoplay: true,
-        autoplayTimeout:2500,
+        autoplayTimeout: 2500,
         loop: true,
         responsive: {
             0: {
