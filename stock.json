@@ -12,7 +12,7 @@
         "nombre": "Procesador gamer AMD Ryzen 5 3600",
         "precio": 30000,
         "precio2": "30.000",
-        "imagen": "../img/procesador1.jpeg",
+        "imagen": "../img/procesador1.jpg",
         "categoria": "procesador"
     },
     {
@@ -100,7 +100,7 @@
         "nombre": "Nvidia Evga FTW3 GEFORCE RTX 3070 8GB",
         "precio": 315499,
         "precio2": "315.499",
-        "imagen": "../img/placadevideo5.jpeg",
+        "imagen": "../img/placadevideo5.jpg",
         "categoria": "placaVideo"
     },
     {
@@ -256,7 +256,7 @@
         "nombre": "Memoria RAM Vengeance RGB Pro gamer white 16GB",
         "precio": 19999,
         "precio2": "19.999",
-        "imagen": "../img/ram5.jpeg",
+        "imagen": "../img/ram5.jpg",
         "categoria": "memoriaRam"
     },
     {
@@ -374,7 +374,7 @@
         "nombre": "Disco sólido interno Gigabyte 240GB",
         "precio": 4899,
         "precio2": "4.899",
-        "imagen": "../img/discoSolido4.jpeg",
+        "imagen": "../img/discoSolido4.jpg",
         "categoria": "discoSolido"
     },
     {
